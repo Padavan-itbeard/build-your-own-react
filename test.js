@@ -1,7 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
+<h1 title="foo">Hello!</h1> // JSX
 
-// const element = React.createElement("h1", { title: "foo" }, "Hello!");
+const container = document.getElementById("root");
 
 const element = {
     type: "h1",
@@ -10,7 +9,6 @@ const element = {
         children: "Hello!"
     }
 }
-const container = document.getElementById("root");
 
 const node = document.createElement(element.type);
 node["title"] = element.props.title;
@@ -20,5 +18,3 @@ text["nodeValue"] = element.props.children;
 
 node.appendChild(text);
 container.appendChild(node);
-
-// ReactDOM.render(element, container);
