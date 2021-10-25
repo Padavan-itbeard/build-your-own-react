@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  devtool: "source-map",
   entry: ["./src/index.js"],
   output: {
     path: path.resolve(__dirname, "build"),
@@ -28,7 +29,9 @@ module.exports = {
   resolve: {
     extensions: [".js", ".json", ".jsx", ".css"],
   },
-	plugins: [new HtmlWebpackPlugin({
-		template: "./src/index.html"
-	})],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
 };

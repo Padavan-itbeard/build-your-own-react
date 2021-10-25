@@ -39,7 +39,28 @@ const element = (
 //     createElement("b"),
 // );
 
-console.log(element);
 const container = document.getElementById("root");
 
-ReactDOM.render(element, container);
+// ReactDOM.render(element, container);
+
+function render(element, container) {
+    const {type, props} = element;
+    const dom = type === "TEXT_ELEMENT" 
+        ? document.createTextNode("")
+        : document.createElement(type);
+    
+    const isProperty = key => key !== "children";
+
+    Object.keys(props)
+        .filter(isProperty)
+        .forEach(name => {
+            dom[name] = props[name];
+        });
+
+    const elementChildren = props.children || [];
+    elementChildren.forEach(child => render(child, dom));
+
+    container.appendChild(dom);
+}
+
+render(element, container);
